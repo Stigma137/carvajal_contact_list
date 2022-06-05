@@ -18,8 +18,5 @@ class ContactDataService {
   deleteAll() {
     return http.delete(`/contacts`);
   }
-  findByName(name) {
-    return http.get(`/contacts?id=${name}`);
-  }
 }
 export default new ContactDataService();

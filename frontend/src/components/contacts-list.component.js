@@ -74,29 +74,9 @@ export default class ContactsList extends Component {
       });
   }
   render() {
-    const { searchName, contacts, currentContact, currentIndex } = this.state;
+    const { contacts, currentContact, currentIndex } = this.state;
     return (
       <div className="list row">
-        <div className="col-md-8">
-          <div className="input-group mb-3">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search by name"
-              value={searchName}
-              onChange={this.onChangeSearchName}
-            />
-            <div className="input-group-append">
-              <button
-                className="btn btn-outline-secondary"
-                type="button"
-                onClick={this.searchName}
-              >
-                Search
-              </button>
-            </div>
-          </div>
-        </div>
         <div className="col-md-6">
           <h4>Contacts List</h4>
           <ul className="list-group">

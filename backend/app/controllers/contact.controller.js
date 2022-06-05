@@ -14,7 +14,6 @@ exports.create = (req, res) => {
   const contact = {
     name: req.body.name,
     lastName: req.body.lastName,
-    lastName: req.body.lastName,
     email: req.body.email,
     mainTel: req.body.mainTel,
     secondTel: req.body.secondTel,
@@ -53,7 +52,7 @@ exports.findAll = (req, res) => {
 };
 // Find a single Contact with an id
 exports.findOne = (req, res) => {
-    const id = req.params.id;
+  const id = req.params.id;
   Contact.findByPk(id)
     .then(data => {
       if (data) {

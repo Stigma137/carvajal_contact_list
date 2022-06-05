@@ -188,6 +188,8 @@ export default class ContactsList extends Component {
               <Link
                 to={"/contacts/" + currentContact.id}
                 className="badge badge-warning"
+                onClick={localStorage.setItem("id", currentContact.id)}
+                style={{ color: '#0000FF' }}
               >
                 Edit
               </Link>

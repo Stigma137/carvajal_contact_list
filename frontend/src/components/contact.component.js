@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ContactDataService from "../services/contact.service";
 export default class Contact extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.onChangeName = this.onChangeName.bind(this.onChangeName);
     this.onChangeLastName = this.onChangeLastName.bind(this.onChangeLastName);
@@ -18,7 +18,7 @@ export default class Contact extends Component {
     this.deleteContact = this.deleteContact.bind(this.deleteContact);
     this.state = {
       currentContact: {
-        id: null,
+        id : null,
         name: "",
         lastName: "", 
         email: "", 
@@ -34,7 +34,7 @@ export default class Contact extends Component {
     };
   }
   componentDidMount = () => {
-    this.getContact(this.props.id);
+    this.getContact(localStorage.getItem("id"));
   }
   onChangeName = (e) => {
     const name = e.target.value;
@@ -284,8 +284,10 @@ export default class Contact extends Component {
               </div>
             </form>
             <button
+
               className="badge badge-danger mr-2"
               onClick={this.deleteContact}
+              style={{ color: '#0000FF' }}
             >
               Delete
             </button>
@@ -293,6 +295,7 @@ export default class Contact extends Component {
               type="submit"
               className="badge badge-success"
               onClick={this.updateContact}
+              style={{ color: '#0000FF' }}
             >
               Update
             </button>

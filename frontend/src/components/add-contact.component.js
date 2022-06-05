@@ -14,70 +14,71 @@ export default class AddContact extends Component {
       address: "", 
       company: "", 
       jobTittle: "", 
-      birthday: "" 
+      birthday: "",
+      submitted: false
     };
-    this.onChangeName = this.onChangeName.bind(this);
-    this.onChangeLastName = this.onChangeLastName.bind(this);
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangeMainTel = this.onChangeMainTel.bind(this);
-    this.onChangeSecondTel = this.onChangeSecondTel.bind(this);
-    this.onChangeCellularNumber = this.onChangeCellularNumber.bind(this);
-    this.onChangeAddress = this.onChangeAddress.bind(this);
-    this.onChangeCompany = this.onChangeCompany.bind(this);
-    this.onChangeJobTittle = this.onChangeJobTittle.bind(this);
-    this.onChangeBirthday = this.onChangeBirthday.bind(this);
+    this.onChangeName = this.onChangeName.bind(this.onChangeName);
+    this.onChangeLastName = this.onChangeLastName.bind(this.onChangeLastName);
+    this.onChangeEmail = this.onChangeEmail.bind(this.onChangeEmail);
+    this.onChangeMainTel = this.onChangeMainTel.bind(this.onChangeMainTel);
+    this.onChangeSecondTel = this.onChangeSecondTel.bind(this.onChangeSecondTel);
+    this.onChangeCellularNumber = this.onChangeCellularNumber.bind(this.onChangeCellularNumber);
+    this.onChangeAddress = this.onChangeAddress.bind(this.onChangeAddress);
+    this.onChangeCompany = this.onChangeCompany.bind(this.onChangeCompany);
+    this.onChangeJobTittle = this.onChangeJobTittle.bind(this.onChangeJobTittle);
+    this.onChangeBirthday = this.onChangeBirthday.bind(this.onChangeBirthday);
   }
-  onChangeName(e) {
+  onChangeName = (e) =>  {
     this.setState({
       name: e.target.value
     });
   }
-  onChangeLastName(e) {
+  onChangeLastName = (e) => {
     this.setState({
       lastName: e.target.value
     });
   }
-  onChangeEmail(e) {
+  onChangeEmail = (e) => {
     this.setState({
       email: e.target.value
     });
   }
-  onChangeMainTel(e) {
+  onChangeMainTel = (e) => {
     this.setState({
       mainTel: e.target.value
     });
   }
-  onChangeSecondTel(e) {
+  onChangeSecondTel = (e) => {
     this.setState({
       secondTel: e.target.value
     });
   }
-  onChangeCellularNumber(e) {
+  onChangeCellularNumber = (e) => {
     this.setState({
       cellularNumber: e.target.value
     });
   }
-  onChangeAddress(e) {
+  onChangeAddress = (e) => {
     this.setState({
       address: e.target.value
     });
   }
-  onChangeCompany(e) {
+  onChangeCompany = (e) => {
     this.setState({
       company: e.target.value
     });
   }
-  onChangeJobTittle(e) {
+  onChangeJobTittle = (e) => {
     this.setState({
       jobTittle: e.target.value
     });
   }
-  onChangeBirthday(e) {
+  onChangeBirthday = (e) => {
     this.setState({
       birthday: e.target.value
     });
   }
-  saveContact() {
+  saveContact = () => {
     var data = {
         name: this.state.name,
         lastName: this.state.lastName, 
@@ -103,7 +104,8 @@ export default class AddContact extends Component {
           address: response.data.address, 
           company: response.data.company, 
           jobTittle: response.data.jobTittle, 
-          birthday: response.data.birthday
+          birthday: response.data.birthday,
+          submitted:true
         });
         console.log(response.data);
       })
@@ -111,7 +113,7 @@ export default class AddContact extends Component {
         console.log(e);
       });
   }
-  newContact() {
+  newContact = () => {
     this.setState({
         id: null,
         name: "",
@@ -123,7 +125,8 @@ export default class AddContact extends Component {
         address: "", 
         company: "", 
         jobTittle: "", 
-        birthday: ""
+        birthday: "",
+        submitted:false
     });
   }
   render() {

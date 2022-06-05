@@ -3,19 +3,19 @@ import ContactDataService from "../services/contact.service";
 export default class Contact extends Component {
   constructor(props) {
     super(props);
-    this.onChangeName = this.onChangeName.bind(this);
-    this.onChangeLastName = this.onChangeLastName.bind(this);
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangeMainTel = this.onChangeMainTel.bind(this);
-    this.onChangeSecondTel = this.onChangeSecondTel.bind(this);
-    this.onChangeCellularNumber = this.onChangeCellularNumber.bind(this);
-    this.onChangeAddress = this.onChangeAddress.bind(this);
-    this.onChangeCompany = this.onChangeCompany.bind(this);
-    this.onChangeJobTittle = this.onChangeJobTittle.bind(this);
-    this.onChangeBirthday = this.onChangeBirthday.bind(this);
-    this.getContact = this.getContact.bind(this);
-    this.updateContact = this.updateContact.bind(this);
-    this.deleteContact = this.deleteContact.bind(this);
+    this.onChangeName = this.onChangeName.bind(this.onChangeName);
+    this.onChangeLastName = this.onChangeLastName.bind(this.onChangeLastName);
+    this.onChangeEmail = this.onChangeEmail.bind(this.onChangeEmail);
+    this.onChangeMainTel = this.onChangeMainTel.bind(this.onChangeMainTel);
+    this.onChangeSecondTel = this.onChangeSecondTel.bind(this.onChangeSecondTel);
+    this.onChangeCellularNumber = this.onChangeCellularNumber.bind(this.onChangeCellularNumber);
+    this.onChangeAddress = this.onChangeAddress.bind(this.onChangeAddress);
+    this.onChangeCompany = this.onChangeCompany.bind(this.onChangeCompany);
+    this.onChangeJobTittle = this.onChangeJobTittle.bind(this.onChangeJobTittle);
+    this.onChangeBirthday = this.onChangeBirthday.bind(this.onChangeBirthday);
+    this.getContact = this.getContact.bind(this.getContact);
+    this.updateContact = this.updateContact.bind(this.updateContact);
+    this.deleteContact = this.deleteContact.bind(this.deleteContact);
     this.state = {
       currentContact: {
         id: null,
@@ -33,10 +33,10 @@ export default class Contact extends Component {
       message: ""
     };
   }
-  componentDidMount() {
-    this.getContact(this.props.match.params.id);
+  componentDidMount = () => {
+    this.getContact(this.props.id);
   }
-  onChangeName(e) {
+  onChangeName = (e) => {
     const name = e.target.value;
     this.setState(function(prevState) {
       return {
@@ -47,7 +47,7 @@ export default class Contact extends Component {
       };
     });
   }
-  onChangeLastName(e) {
+  onChangeLastName = (e) => {
     const lastName = e.target.value;
     
     this.setState(prevState => ({
@@ -57,7 +57,7 @@ export default class Contact extends Component {
       }
     }));
   }
-  onChangeEmail(e) {
+  onChangeEmail = (e) => {
     const email = e.target.value;
     
     this.setState(prevState => ({
@@ -67,7 +67,7 @@ export default class Contact extends Component {
       }
     }));
   }
-  onChangeMainTel(e) {
+  onChangeMainTel = (e) => {
     const mainTel = e.target.value;
     
     this.setState(prevState => ({
@@ -77,7 +77,7 @@ export default class Contact extends Component {
       }
     }));
   }
-  onChangeSecondTel(e) {
+  onChangeSecondTel = (e) => {
     const secondTel = e.target.value;
     
     this.setState(prevState => ({
@@ -87,7 +87,7 @@ export default class Contact extends Component {
       }
     }));
   }
-  onChangeCellularNumber(e) {
+  onChangeCellularNumber = (e) => {
     const cellularNumber = e.target.value;
     
     this.setState(prevState => ({
@@ -97,7 +97,7 @@ export default class Contact extends Component {
       }
     }));
   }
-  onChangeAddress(e) {
+  onChangeAddress = (e) => {
     const address = e.target.value;
     
     this.setState(prevState => ({
@@ -107,7 +107,7 @@ export default class Contact extends Component {
       }
     }));
   }
-  onChangeCompany(e) {
+  onChangeCompany = (e) => {
     const company = e.target.value;
     
     this.setState(prevState => ({
@@ -117,7 +117,7 @@ export default class Contact extends Component {
       }
     }));
   }
-  onChangeJobTittle(e) {
+  onChangeJobTittle = (e) => {
     const jobTittle = e.target.value;
     
     this.setState(prevState => ({
@@ -127,7 +127,7 @@ export default class Contact extends Component {
       }
     }));
   }
-  onChangeBirthday(e) {
+  onChangeBirthday = (e) => {
     const birthday = e.target.value;
     
     this.setState(prevState => ({
@@ -137,7 +137,7 @@ export default class Contact extends Component {
       }
     }));
   }
-  getContact(id) {
+  getContact = (id) => {
     ContactDataService.get(id)
       .then(response => {
         this.setState({
@@ -149,7 +149,7 @@ export default class Contact extends Component {
         console.log(e);
       });
   }
-  updateContact() {
+  updateContact = () => {
     ContactDataService.update(
       this.state.currentContact.id,
       this.state.currentContact
@@ -164,7 +164,7 @@ export default class Contact extends Component {
         console.log(e);
       });
   }
-  deleteContact() {    
+  deleteContact = () => {    
     ContactDataService.delete(this.state.currentContact.id)
       .then(response => {
         console.log(response.data);
@@ -174,7 +174,7 @@ export default class Contact extends Component {
         console.log(e);
       });
   }
-  render() {
+  render  = () => {
     const { currentContact } = this.state;
     return (
       <div>

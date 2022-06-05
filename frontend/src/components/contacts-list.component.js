@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 export default class ContactsList extends Component {
   constructor(props) {
     super(props);
-    this.onChangeSearchName = this.onChangeSearchName.bind(this);
-    this.retrieveContacts = this.retrieveContacts.bind(this);
-    this.refreshList = this.refreshList.bind(this);
-    this.setActiveContact = this.setActiveContact.bind(this);
-    this.removeAllContacts = this.removeAllContacts.bind(this);
-    this.searchName = this.searchName.bind(this);
+    this.onChangeSearchName = this.onChangeSearchName.bind(this.onChangeSearchName);
+    this.retrieveContacts = this.retrieveContacts.bind(this.retrieveContacts);
+    this.refreshList = this.refreshList.bind(this.refreshList);
+    this.setActiveContact = this.setActiveContact.bind(this.setActiveContact);
+    this.removeAllContacts = this.removeAllContacts.bind(this.removeAllContacts);
+    this.searchName = this.searchName.bind(this.searchName);
     this.state = {
       contacts: [],
       currentContact: null,
@@ -17,16 +17,16 @@ export default class ContactsList extends Component {
       searchName: ""
     };
   }
-  componentDidMount() {
+  componentDidMount = () => {
     this.retrieveContacts();
   }
-  onChangeSearchName(e) {
+  onChangeSearchName = (e) => {
     const searchName = e.target.value;
     this.setState({
       searchName: searchName
     });
   }
-  retrieveContacts() {
+  retrieveContacts = () => {
     ContactDataService.getAll()
       .then(response => {
         this.setState({
@@ -38,20 +38,20 @@ export default class ContactsList extends Component {
         console.log(e);
       });
   }
-  refreshList() {
+  refreshList = () => {
     this.retrieveContacts();
     this.setState({
       currentContact: null,
       currentIndex: -1
     });
   }
-  setActiveContact(contact, index) {
+  setActiveContact = (contact, index) => {
     this.setState({
       currentContact: contact,
       currentIndex: index
     });
   }
-  removeAllContacts() {
+  removeAllContacts = () => {
     ContactDataService.deleteAll()
       .then(response => {
         console.log(response.data);
@@ -61,7 +61,7 @@ export default class ContactsList extends Component {
         console.log(e);
       });
   }
-  searchName() {
+  searchName = () => {
     ContactDataService.findByName(this.state.searchName)
       .then(response => {
         this.setState({

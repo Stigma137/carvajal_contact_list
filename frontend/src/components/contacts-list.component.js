@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 export default class ContactsList extends Component {
   constructor(props) {
     super(props);
-    this.onChangeSearchName = this.onChangeSearchName.bind(this.onChangeSearchName);
     this.retrieveContacts = this.retrieveContacts.bind(this.retrieveContacts);
     this.refreshList = this.refreshList.bind(this.refreshList);
     this.setActiveContact = this.setActiveContact.bind(this.setActiveContact);
@@ -19,12 +18,6 @@ export default class ContactsList extends Component {
   }
   componentDidMount = () => {
     this.retrieveContacts();
-  }
-  onChangeSearchName = (e) => {
-    const searchName = e.target.value;
-    this.setState({
-      searchName: searchName
-    });
   }
   retrieveContacts = () => {
     ContactDataService.getAll()
@@ -56,18 +49,6 @@ export default class ContactsList extends Component {
       .then(response => {
         console.log(response.data);
         this.refreshList();
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  }
-  searchName = () => {
-    ContactDataService.findByName(this.state.searchName)
-      .then(response => {
-        this.setState({
-          contacts: response.data
-        });
-        console.log(response.data);
       })
       .catch(e => {
         console.log(e);

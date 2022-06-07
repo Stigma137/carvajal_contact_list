@@ -8,7 +8,6 @@ export default class ContactsList extends Component {
     this.refreshList = this.refreshList.bind(this.refreshList);
     this.setActiveContact = this.setActiveContact.bind(this.setActiveContact);
     this.removeAllContacts = this.removeAllContacts.bind(this.removeAllContacts);
-    this.searchName = this.searchName.bind(this.searchName);
     this.state = {
       contacts: [],
       currentContact: null,
